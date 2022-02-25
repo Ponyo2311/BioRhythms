@@ -66,7 +66,7 @@ def plot_spect(df, col_index, title="", sampling_freq=24,
     gs = fig.add_gridspec(1, 3)
 
     ax1 = fig.add_subplot(gs[0, :2])
-    ax3=fig.add_subplot(gs[1,:2])
+    #ax3=fig.add_subplot(gs[1,:2])
 
     # surrogate
     cax1 = ax1.pcolormesh(np.arange(0, len(array)),
@@ -76,9 +76,9 @@ def plot_spect(df, col_index, title="", sampling_freq=24,
                           shading="gouraud")  # (1/freqs) will give you the period, if you want the frequency you use freqs
 
     # wt of surrogate
-    cax3 = ax3.pcolormesh(np.arange(0, len(array)), 1 / sfreqs, spower,
-                          vmin=power.min(), vmax=power.max(),
-                          cmap='plasma', shading="gouraud")
+#    cax3 = ax3.pcolormesh(np.arange(0, len(array)), 1 / sfreqs, spower,
+#                          vmin=power.min(), vmax=power.max(),
+#                          cmap='plasma', shading="gouraud")
 
     # Cone of Influence (edge effect)
     COIlow = [np.sqrt(2) * s for s in scales]
@@ -88,7 +88,7 @@ def plot_spect(df, col_index, title="", sampling_freq=24,
     ax1.fill_between(COIlow, 1 / freqs, np.max(1 / freqs), color='grey', alpha=0.6)
     ax1.fill_between(COIhigh, 1 / freqs, np.max(1 / freqs), color='grey', alpha=0.6)
 
-    for ax in [ax1,ax3]:
+    for ax in [ax1]:
         ax.set_xlabel("Time (" + sampling_unit + ")")  # set unit as arg
         ax.set_ylabel("Period (" + sampling_period + ")")
         ax.set_yticks(np.round(1 / freqs, 0))
