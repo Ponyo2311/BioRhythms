@@ -92,7 +92,7 @@ def plot_spect(df, col_index, title="", sampling_freq=24,
         ax.set_xlabel("Time (" + sampling_unit + ")")  # set unit as arg
         ax.set_ylabel("Period (" + sampling_period + ")")
         ax.set_yticks(np.round(1 / freqs, 0))
-        ax.set_yscale('log', basey=2)
+        ax.set_yscale('log', base=2)
 
         ax.get_yaxis().get_major_formatter().labelOnlyBase = False
         ax.get_yaxis().set_major_formatter(ticker.ScalarFormatter())
